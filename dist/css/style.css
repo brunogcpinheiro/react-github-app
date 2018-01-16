@@ -5,7 +5,7 @@
 }
 
 body {
-  font: 16px sans-serif;
+  font: 16px 'Nunito', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .search input {
-  font-size: 30px;
+  font-size: 20px;
   padding: 10px;
   width: 100%;
 }
@@ -57,9 +57,13 @@ ul {
 .actions button {
   font-size: 20px;
   font-weight: 700;
+  font-family: 'Nunito', sans-serif;
   height: 50px;
   text-transform: uppercase;
   width: 48%;
+  background: transparent;
+  color: royalblue;
+  border: 1px solid royalblue;
 }
 
 .repos li,
