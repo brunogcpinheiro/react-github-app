@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserInfo = () => (
+const UserInfo = ({ username, repos, followers, following }) => (
   <div className='user-info'>
     <img src='https://avatars1.githubusercontent.com/u/13948019?v=4' alt='Profile Image' />
     <h1 className='username'>
@@ -14,5 +14,14 @@ const UserInfo = () => (
     </ul>
   </div>
 )
+
+UserInfo.propTypes = {
+  userinfo: React.PropTypes.shape({
+    username: React.PropTypes.string.isRequired,
+    repos: React.PropTypes.number.isRequired,
+    followers: React.PropTypes.number.isRequired,
+    following: React.PropTypes.number.isRequired
+  })
+}
 
 export default UserInfo
