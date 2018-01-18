@@ -64,6 +64,7 @@ ul {
   background: transparent;
   color: royalblue;
   border: 1px solid royalblue;
+  cursor: pointer;
 }
 
 .repos li,
