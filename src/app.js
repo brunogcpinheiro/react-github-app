@@ -27,7 +27,9 @@ class App extends Component {
             repos: result.public_repos,
             followers: result.followers,
             following: result.following
-          }
+          },
+          repos: [],
+          starred: []
         })
       })
     }
@@ -35,7 +37,7 @@ class App extends Component {
 
   handleRepos (type) {
     return (e) => {
-      ajax().get(`https://api.github.com/users/brunogcpinheiro/${type}`).then((result) => {
+      ajax().get(`https://api.github.com/users/${this.state.userinfo.login}/${type}`).then((result) => {
         this.setState({
           [type]: result.map((repo) => {
             return {
