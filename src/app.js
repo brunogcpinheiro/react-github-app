@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ajax from '@fdaciuk/ajax'
 
 import AppContent from './components/app-content'
 
@@ -6,20 +7,44 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      userinfo: {
-        username: 'Bruno Pinheiro',
-        repos: 12,
-        followers: 10,
-        following: 10
-      },
-      repos: [{
-        name: 'Repo1',
-        link: '#'
-      }],
-      starred: [{
-        name: 'Star1',
-        link: '#'
-      }]
+      userinfo: null,
+      repos: [],
+      starred: []
+    }
+  }
+
+  handleSearch (e) {
+    const value = e.target.value
+    const key = e.which || e.keyCode
+    const ENTER = 13
+    if (key === ENTER) {
+      ajax().get(`https://api.github.com/users/${value}`).then((result) => {
+        this.setState({
+          userinfo: {
+            username: result.name,
+            photo: result.avatar_url,
+            login: result.login,
+            repos: result.public_repos,
+            followers: result.followers,
+            following: result.following
+          }
+        })
+      })
+    }
+  }
+
+  handleRepos (type) {
+    return (e) => {
+      ajax().get(`https://api.github.com/users/brunogcpinheiro/${type}`).then((result) => {
+        this.setState({
+          [type]: result.map((repo) => {
+            return {
+              name: repo.name,
+              link: repo.html_url
+            }
+          })
+        })
+      })
     }
   }
 
@@ -28,7 +53,10 @@ class App extends Component {
       <AppContent
         userinfo={this.state.userinfo}
         repos={this.state.repos}
-        starred={this.state.starred} />
+        starred={this.state.starred}
+        handleSearch={(e) => this.handleSearch(e)}
+        handleRepos={this.handleRepos('repos')}
+        handleStarred={this.handleRepos('starred')} />
     )
   }
 }
