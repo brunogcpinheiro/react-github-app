@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const UserInfo = ({ userinfo }) => (
   <div className='user-info'>
@@ -16,13 +16,13 @@ const UserInfo = ({ userinfo }) => (
 )
 
 UserInfo.propTypes = {
-  userinfo: React.PropTypes.shape({
-    username: React.PropTypes.string.isRequired,
-    photo: React.PropTypes.string.isRequired,
-    login: React.PropTypes.string.isRequired,
-    repos: React.PropTypes.number.isRequired,
-    followers: React.PropTypes.number.isRequired,
-    following: React.PropTypes.number.isRequired
+  userinfo: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+    login: PropTypes.string.isRequired,
+    repos: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired
   })
 }
 

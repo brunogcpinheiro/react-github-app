@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const Search = ({ isFetching, handleSearch }) => (
   <div className='search'>
@@ -11,7 +11,8 @@ const Search = ({ isFetching, handleSearch }) => (
 )
 
 Search.propTypes = {
-  handleSearch: React.PropTypes.func.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  handleSearch: PropTypes.func.isRequired
 }
 
 export default Search

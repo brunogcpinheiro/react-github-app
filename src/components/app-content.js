@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import Search from './search'
 import UserInfo from './user-info'
@@ -29,9 +29,13 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, handle
 )
 
 AppContent.propTypes = {
-  userinfo: React.PropTypes.object,
-  repos: React.PropTypes.array.isRequired,
-  starred: React.PropTypes.array.isRequired
+  userinfo: PropTypes.object,
+  repos: PropTypes.array.isRequired,
+  starred: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  handleRepos: PropTypes.func.isRequired,
+  handleStarred: PropTypes.func.isRequired
 }
 
 export default AppContent
